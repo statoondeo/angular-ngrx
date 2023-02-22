@@ -1,0 +1,40 @@
+<div *ngIf="books$ | async as books; else loading">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publisher</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <th scope="row">{{ book.id }}</th>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.publisher }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-outline-warning me-3"
+            type="button"
+            (click)="update(book)"
+          >
+            Update
+          </button>
+          <button
+            class="btn btn-sm btn-outline-danger"
+            type="button"
+            (click)="delete(book)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #loading>
+  <div class="alert alert-info" role="alert">Retrieving books ...</div>
+</ng-template>

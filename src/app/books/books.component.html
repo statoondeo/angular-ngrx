@@ -1,0 +1,6 @@
+<div class="alert alert-danger" *ngIf="error$ | async as error">
+  <b>{{ error }}</b>
+</div>
+<book-form #formRef></book-form>
+<hr />
+<book-list (bookEdit)="formRef.onBookEdit($event)"></book-list>

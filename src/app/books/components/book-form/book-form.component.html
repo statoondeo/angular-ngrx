@@ -1,0 +1,92 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" id="id" formControlName="id" />
+
+  <div class="col-md-4">
+    <label for="title" class="form-label">Title</label>
+    <div class="input-group has-validation">
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="Title"
+        formControlName="title"
+        [class.is-valid]="title.touched && title.valid"
+        [class.is-invalid]="title.touched && title.invalid"
+      />
+      <div
+        *ngIf="title.touched && title.hasError('required')"
+        class="invalid-feedback"
+      >
+        Please enter a title
+      </div>
+      <div
+        *ngIf="title.touched && title.hasError('minlength')"
+        class="invalid-feedback"
+      >
+        Please enter a title with at least 5 characters
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="author" class="form-label">Author</label>
+    <div class="input-group has-validation">
+      <input
+        type="text"
+        class="form-control"
+        id="author"
+        placeholder="Author"
+        formControlName="author"
+        [class.is-valid]="author.touched && author.valid"
+        [class.is-invalid]="author.touched && author.invalid"
+      />
+      <div
+        *ngIf="author.touched && author.hasError('required')"
+        class="invalid-feedback"
+      >
+        Please enter an author
+      </div>
+      <div
+        *ngIf="author.touched && author.hasError('minlength')"
+        class="invalid-feedback"
+      >
+        Please enter an author with at least 5 characters
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <label for="publisher" class="form-label">Publisher</label>
+    <div class="input-group has-validation">
+      <input
+        type="text"
+        class="form-control"
+        id="publisher"
+        placeholder="Publisher"
+        formControlName="publisher"
+        [class.is-valid]="publisher.touched && publisher.valid"
+        [class.is-invalid]="publisher.touched && publisher.invalid"
+      />
+      <div
+        *ngIf="publisher.touched && publisher.hasError('required')"
+        class="invalid-feedback"
+      >
+        Please enter a publisher
+      </div>
+      <div
+        *ngIf="publisher.touched && publisher.hasError('minlength')"
+        class="invalid-feedback"
+      >
+        Please enter a publisher with at least 5 characters
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="btn btn-outline-success"
+    type="submit"
+    [disabled]="!bookForm.valid"
+  >
+    Save book
+  </button>
+</form>
